@@ -1,24 +1,29 @@
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 public class Main {
-	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);
-		
-		int T = sc.nextInt();
-		
-		for(int test_case = 0 ; test_case < T ; test_case++) {
-			int C = sc.nextInt();
-			
-			int q = C / 25;
-			C = C % 25;
-			
-			int d = C / 10;
-			C = C % 10;
-			
-			int n = C / 5;
-			int p = C % 5;
-			
-			System.out.println(q + " " + d + " " + n + " " + p);
-		}
-	}
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringBuilder sb = new StringBuilder();
+
+        int T = Integer.parseInt(br.readLine());
+
+        for(int i = 0 ; i < T ; i++){
+            int c = Integer.parseInt(br.readLine());
+
+            int q = c / 25;
+            c %= 25;
+
+            int d = c / 10;
+            c %= 10;
+
+            int n = c / 5;
+            c %= 5;
+
+            sb.append(q + " " + d + " " + n + " " + c ).append("\n");
+        }
+
+        System.out.println(sb);
+    }
 }
