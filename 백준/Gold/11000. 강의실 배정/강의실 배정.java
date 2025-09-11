@@ -1,3 +1,5 @@
+//백준 - 강의실 배정
+
 import java.io.*;
 import java.util.*;
 
@@ -15,23 +17,33 @@ public class Main {
             arr[i][1] = Integer.parseInt(st.nextToken());
         }
 
-        Arrays.sort(arr, (o1, o2) ->{
-           if(o1[0] == o2[0]) {
-               return o1[1] - o2[1];
-           }
-           return o1[0] - o2[0];
-        });
-
-        PriorityQueue<Integer> pq = new PriorityQueue<>();
+        int[] startArr = new int[N];
+        int[] endArr = new int[N];
 
         for(int i = 0 ; i < N ; i++){
-            if(!pq.isEmpty() && pq.peek() <= arr[i][0]){
-                pq.poll();
-
-            }
-            pq.add(arr[i][1]);
+            startArr[i]= arr[i][0];
+            endArr[i] = arr[i][1];
         }
 
-        System.out.println(pq.size());
+        Arrays.sort(startArr);
+        Arrays.sort(endArr);
+        
+        int start = 0;
+        int end = 0;
+        int current = 0;
+        int maxRooms = 0;
+        
+        while(start < N){
+            if(startArr[start] < endArr[end]){
+                current++;
+                maxRooms = Math.max(maxRooms, current);
+                start++;
+            } else {
+                current--;
+                end++;
+            }
+        }
+        
+        System.out.println(maxRooms);
     }
 }
