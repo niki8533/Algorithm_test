@@ -29,14 +29,29 @@ public class Main {
                     }
                     return o2.silver - o1.silver;
                 }
-                return o2.gold - o2.gold;
+                return o2.gold - o1.gold;
             }
         });
 
+        int[] rank = new int[N];
+        rank[0] = 1;
+
+        for(int i = 1 ; i < N ; i++){
+            Medal prev = list.get(i - 1);
+            Medal curr = list.get(i);
+
+            if(prev.gold == curr.gold &&
+                prev.silver == curr.silver &&
+                prev.bronze == curr.bronze) {
+                rank[i] = rank[i-1];
+            } else {
+                rank[i] = i + 1;
+            }
+        }
+
         for(Medal medal : list){
             if(medal.country == K){
-                System.out.println(list.indexOf(medal) + 1);
-                break;
+                System.out.println(rank[list.indexOf(medal)]);
             }
         }
     }
