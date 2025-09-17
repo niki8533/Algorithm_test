@@ -35,7 +35,7 @@ public class Main {
 
         for(Medal medal : list){
             if(medal.country == K){
-                System.out.println(list.indexOf(medal));
+                System.out.println(list.indexOf(medal) + 1);
                 break;
             }
         }
