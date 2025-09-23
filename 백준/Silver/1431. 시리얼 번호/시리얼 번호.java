@@ -15,20 +15,8 @@ public class Main {
             if(o1.length() != o2.length()){
                 return o1.length() - o2.length();
             } else {
-                int sum1 = 0;
-                int sum2 = 0;
-
-                for(int i = 0 ; i < o1.length() ; i++){
-                    char c1 = o1.charAt(i);
-                    char c2 = o2.charAt(i);
-
-                    if(c1 >= 48 && c1 <= 57) {
-                        sum1 = sum1 + c1 - '0';
-                    }
-                    if(c2 >= 48 && c2 <= 57) {
-                        sum2 = sum2 + c2 - '0';
-                    }
-                }
+                int sum1 = digitSum(o1);
+                int sum2 = digitSum(o2);
 
                 if(sum1 == sum2){
                     return o1.compareTo(o2);
@@ -44,5 +32,19 @@ public class Main {
         }
 
         System.out.println(sb);
+    }
+    
+    public static int digitSum(String o1){
+        int sum1 = 0;
+
+        for(int i = 0 ; i < o1.length() ; i++){
+            char c1 = o1.charAt(i);
+
+            if(c1 >= 48 && c1 <= 57) {
+                sum1 = sum1 + c1 - '0';
+            }
+        }
+        
+        return sum1;
     }
 }
