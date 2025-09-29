@@ -1,36 +1,34 @@
 import java.util.*;
 import java.io.*;
-
 public class Main {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int N = Integer.parseInt(br.readLine());
 
-        StringTokenizer st = new StringTokenizer(br.readLine());
         int[] arr = new int[N];
-        int[] sorting = new int[N];
+        int[] arrSort = new int[N];
+
+        StringTokenizer st = new StringTokenizer(br.readLine());
         for(int i = 0 ; i < N ; i++){
-            arr[i] = sorting[i] = Integer.parseInt(st.nextToken());
-            
+            arr[i] = arrSort[i] = Integer.parseInt(st.nextToken());
         }
 
-        Arrays.sort(sorting);
+        Arrays.sort(arrSort);
 
         HashMap<Integer, Integer> map = new HashMap<>();
         int rank = 0;
-        for(int value: sorting){
-            if(!map.containsKey(value)){
-                map.put(value, rank);
+        for(int i = 0 ; i < N ; i++){
+            if(!map.containsKey(arrSort[i])){
+                map.put(arrSort[i], rank);
                 rank++;
             }
         }
 
         StringBuilder sb = new StringBuilder();
-        for(int key : arr){
-            int ranking = map.get(key);
-            sb.append(ranking + " ");
+        for(int i = 0 ; i < N ; i++){
+            sb.append(map.get(arr[i]) + " ");
         }
 
-        System.out.println(sb);
+        System.out.print(sb);
     }
 }
