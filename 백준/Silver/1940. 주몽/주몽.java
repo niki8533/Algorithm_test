@@ -7,7 +7,6 @@ public class Main {
 
         int N = Integer.parseInt(br.readLine());
         int M = Integer.parseInt(br.readLine());
-
         int[] arr = new int[N];
 
         StringTokenizer st = new StringTokenizer(br.readLine());
@@ -22,12 +21,13 @@ public class Main {
         int answer = 0;
 
         while(left < right){
-            if(arr[left] + arr[right] < M){
+            int sum = arr[left] + arr[right];
+
+            if(sum < M){
                 left++;
-            } else if(arr[left] + arr[right] > M){
+            } else if(sum > M){
                 right--;
-            }
-            else if(arr[left] + arr[right] == M){
+            } else {
                 answer++;
                 left++;
             }
