@@ -6,20 +6,20 @@ public class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
         int N = Integer.parseInt(br.readLine());
+        PriorityQueue<Integer> q = new PriorityQueue<>(Collections.reverseOrder());
 
-        ArrayList<Integer> list = new ArrayList<>();
 
         for(int i = 0 ; i < N ;i++){
             StringTokenizer st = new StringTokenizer(br.readLine());
             for(int j = 0 ; j < N ; j++){
                 int num = Integer.parseInt(st.nextToken());
-
-                list.add(num);
+                q.add(num);
             }
         }
 
-        Collections.sort(list, Collections.reverseOrder());
-
-        System.out.println(list.get(N - 1));
+        for(int i = 0 ; i < N - 1; i++){
+            q.poll();
+        }
+        System.out.println(q.poll());
     }
 }
