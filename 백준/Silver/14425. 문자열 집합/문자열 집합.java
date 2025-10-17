@@ -1,24 +1,26 @@
-import java.util.HashMap;
-import java.util.Scanner;
+import java.util.*;
+import java.io.*;
 
 public class Main {
-	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);
-		
-		int N = sc.nextInt();
-		int M = sc.nextInt();
-		int count = 0;
-		HashMap<String, Integer> word = new HashMap<>();
-		
-		for(int i = 0 ; i < N ; i++) {
-			word.put(sc.next(), 1);
-		}
-		
-		for(int i = 0 ; i < M ; i++) {
-			if(word.get(sc.next()) != null)
-				count++;
-		}
-		
-		System.out.println(count);
-	}
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+        StringTokenizer st = new StringTokenizer(br.readLine());
+        int N = Integer.parseInt(st.nextToken());
+        int M = Integer.parseInt(st.nextToken());
+
+        HashMap<String, Integer> map = new HashMap<>();
+
+        for(int i = 0 ; i < N ; i++){
+            map.put(br.readLine(), 0);
+        }
+
+        int answer = 0;
+        for(int i = 0 ; i < M ; i++){
+           if(map.containsKey(br.readLine()))
+               answer++;
+        }
+
+        System.out.println(answer);
+    }
 }
