@@ -5,63 +5,58 @@ import java.util.Deque;
 import java.util.LinkedList;
 import java.util.StringTokenizer;
 
-
 public class Main {
-	public static void main(String[] args) throws NumberFormatException, IOException {
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		StringBuilder sb = new StringBuilder();
-		
-		int N = Integer.parseInt(br.readLine());
+	public static void main(String[] args) throws IOException {
 		Deque<Integer> q = new LinkedList<>();
-		
-		StringTokenizer st;
-		
-		for(int i = 0 ; i < N ; i++) {
-			st = new StringTokenizer(br.readLine(), " ");
-			String s = st.nextToken();
-			
-			switch(s) {
-			case "push":
-				q.offer(Integer.parseInt(st.nextToken()));
-				break;
-				
-			case "pop":
-				Integer poll = q.poll();
-				if(poll == null)
-					sb.append(-1).append('\n');
-				else
-					sb.append(poll).append('\n');
-				break;
-				
-			case "size":
-				sb.append(q.size()).append('\n');
-				break;
-				
-			case "empty":
-				if(q.isEmpty())
-					sb.append(1).append('\n');
-				else
-					sb.append(0).append('\n');
-				break;
-				
-			case "front":
-				Integer front = q.peek();
-				if(front == null)
-					sb.append(-1).append('\n');
-				else
-					sb.append(front).append('\n');
-				break;
-				
-			case "back":
-				Integer back = q.peekLast();
-				if(back == null)
-					sb.append(-1).append('\n');
-				else
-					sb.append(back).append('\n');
-				break;
+
+		StringBuilder sb = new StringBuilder();
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+		int num = Integer.parseInt(br.readLine());
+
+		for(int i = 0; i < num; i++){
+			StringTokenizer st = new StringTokenizer(br.readLine(), " ");
+			String command = st.nextToken();
+
+			switch (command){
+				case "push":
+					q.offer(Integer.parseInt(st.nextToken()));
+					break;
+
+				case "pop":
+					if(q.isEmpty())
+						sb.append(-1).append("\n");
+					else
+						sb.append(q.poll()).append("\n");
+					break;
+
+				case "size":
+					sb.append(q.size()).append("\n");
+					break;
+
+				case "empty":
+					if(q.isEmpty())
+						sb.append(1).append("\n");
+					else
+						sb.append(0).append("\n");
+					break;
+
+				case "front":
+					if(q.isEmpty())
+						sb.append(-1).append("\n");
+					else
+						sb.append(q.peek()).append("\n");
+					break;
+
+				case "back":
+					if(q.isEmpty())
+						sb.append(-1).append("\n");
+					else
+						sb.append(q.peekLast()).append("\n");
+					break;
 			}
 		}
 		
-		System.out.println(sb);
+		System.out.print(sb);
 	}
 }
