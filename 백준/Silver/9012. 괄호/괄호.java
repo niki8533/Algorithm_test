@@ -18,7 +18,7 @@ public class Main {
 				if( c == '(' || stack.isEmpty())
 					stack.add(c);
 				else
-					if(!stack.isEmpty() && stack.peek() == '(')
+					if(stack.peek() == '(')
 						stack.pop();
 			}
 
