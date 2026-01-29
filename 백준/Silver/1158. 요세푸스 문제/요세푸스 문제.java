@@ -1,38 +1,31 @@
 import java.util.*;
 import java.io.*;
-//백준 - 요세푸스 문제
+
 public class Main {
-    public static void main(String[] args) throws IOException{
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        StringTokenizer st = new StringTokenizer(br.readLine());
-        StringBuilder sb = new StringBuilder();
+	public static void main(String[] args) throws IOException{
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st = new StringTokenizer(br.readLine(), " ");
 
-        int n = Integer.parseInt(st.nextToken());
-        int k = Integer.parseInt(st.nextToken());
+		int N = Integer.parseInt(st.nextToken());
+		int K = Integer.parseInt(st.nextToken());
 
-        int[] arr = new int[n];
-        Queue<Integer> q = new LinkedList<>();
-        Queue<Integer> answer = new LinkedList<>();
-        for(int i = 0 ; i < n ; i++){
-            q.offer(i+1);
-        }
+		Queue<Integer> q = new LinkedList<>();
 
-        sb.append("<");
-        while(!q.isEmpty()){
-            for(int i = 0 ; i < k - 1 ; i++){
-                q.offer(q.poll());
-            }
-            answer.offer(q.poll());
-        }
+		for(int i = 0 ; i < N ; i++){
+			q.offer(i+1);
+		}
 
-        while(!answer.isEmpty()){
-            if(answer.size() == 1){
-                sb.append(answer.poll()).append(">");
-                break;
-            }
-            sb.append(answer.poll()).append(", ");
-        }
+		StringBuilder sb = new StringBuilder();
+		sb.append("<");
+		while(q.size() > 1){
+			for(int i = 0 ; i < K - 1 ; i++){
+				int temp = q.poll();
+				q.offer(temp);
+			}
+			sb.append(q.poll() + ", ");
+		}
+		sb.append(q.poll() + ">");
 
-        System.out.println(sb);
-    }
+		System.out.print(sb);
+	}
 }
