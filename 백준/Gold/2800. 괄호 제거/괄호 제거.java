@@ -1,0 +1,58 @@
+import java.util.*;
+import java.io.*;
+
+public class Main {
+	static List<int[]> brackets;
+	static boolean[] check;
+	static Set<String> set;
+
+	public static void main(String[] args) throws IOException{
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		String str = br.readLine();
+
+		Stack<Integer> stack = new Stack<>();
+		brackets = new ArrayList<>();
+
+		for(int i = 0 ; i < str.length() ; i++){
+			char c = str.charAt(i);
+			if(c == '('){
+				stack.push(i);
+			} else if(c == ')'){
+				brackets.add(new int[]{stack.pop(), i});
+			}
+		}
+
+		check = new boolean[str.length()];
+		set = new TreeSet<>();
+		comb(0, str.toCharArray());
+
+		set.stream().forEach(System.out::println);
+	}
+
+	static void comb(int depth, char[] str) {
+		if(depth == brackets.size()){
+			boolean f = false;
+			StringBuilder sb = new StringBuilder();
+
+			for(int i = 0 ; i < str.length ; i++){
+				if(!check[i]){
+					sb.append(str[i]);
+				} else f = true;
+			}
+
+			if(f){
+				set.add(sb.toString());
+			}
+			return;
+		}
+
+		comb(depth + 1, str);
+
+		int[] bracket = brackets.get(depth);
+		check[bracket[0]] = true;
+		check[bracket[1]] = true;
+		comb(depth+1, str);
+		check[bracket[0]] = false;
+		check[bracket[1]] = false;
+	}
+}
