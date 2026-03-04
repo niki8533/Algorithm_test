@@ -12,13 +12,13 @@ public class Main {
 
 		Stack<Integer> stack = new Stack<>();
 		brackets = new ArrayList<>();
-
 		for(int i = 0 ; i < str.length() ; i++){
 			char c = str.charAt(i);
+
 			if(c == '('){
 				stack.push(i);
 			} else if(c == ')'){
-				brackets.add(new int[]{stack.pop(), i});
+				brackets.add(new int[] {stack.pop(), i});
 			}
 		}
 
@@ -26,18 +26,22 @@ public class Main {
 		set = new TreeSet<>();
 		comb(0, str.toCharArray());
 
-		set.stream().forEach(System.out::println);
+		for(String s : set){
+			System.out.println(s);
+		}
 	}
 
-	static void comb(int depth, char[] str) {
+	static void comb(int depth, char[] chr){
 		if(depth == brackets.size()){
 			boolean f = false;
 			StringBuilder sb = new StringBuilder();
 
-			for(int i = 0 ; i < str.length ; i++){
+			for(int i = 0 ; i < chr.length ; i++){
 				if(!check[i]){
-					sb.append(str[i]);
-				} else f = true;
+					sb.append(chr[i]);
+				} else{
+					f = true;
+				}
 			}
 
 			if(f){
@@ -46,12 +50,12 @@ public class Main {
 			return;
 		}
 
-		comb(depth + 1, str);
-
+		comb(depth + 1, chr);
 		int[] bracket = brackets.get(depth);
 		check[bracket[0]] = true;
 		check[bracket[1]] = true;
-		comb(depth+1, str);
+
+		comb(depth+1, chr);
 		check[bracket[0]] = false;
 		check[bracket[1]] = false;
 	}
