@@ -5,51 +5,50 @@ public class Main {
 	public static void main(String[] args) throws IOException{
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-		int temp = 1;
-		int answer = 0;
-		Stack<Character> stack = new Stack<>();
 		String str = br.readLine();
+		Stack<Character> stack = new Stack<>();
+
+		int answer = 0;
+		int temp = 1;
 		for(int i = 0 ; i < str.length() ; i++){
 			char c = str.charAt(i);
-
-			if(c == '('){
-				stack.push(c);
-				temp = temp * 2;
-			}
-
-			if(c == '['){
-				stack.push(c);
-				temp = temp * 3;
-			}
-
-			if(c == ')'){
-				if(stack.isEmpty() || stack.peek() != '('){
-					answer = 0;
+			
+			switch(c){
+				case '(':
+					stack.push(c);
+					temp = temp * 2;
 					break;
-				}
-				else if(str.charAt(i-1) == '('){
-					answer = temp + answer;
-				}
-				temp = temp / 2;
-				stack.pop();
-			}
-			else if(c == ']'){
-				if(stack.isEmpty() || stack.peek() != '['){
-					answer = 0;
+				case '[':
+					stack.push(c);
+					temp = temp * 3;
 					break;
-				}
-				else if(str.charAt(i-1) == '['){
-					answer = temp + answer;
-				}
-				temp = temp / 3;
-				stack.pop();
+				case ')':
+					if(stack.isEmpty() || stack.peek() != '('){
+                        System.out.println(0);
+						return;
+					} else if(str.charAt(i-1) == '('){
+						answer = answer + temp;
+					}
+					stack.pop();
+					temp = temp / 2;
+					break;
+				case ']':
+					if(stack.isEmpty() || stack.peek() != '['){
+                        System.out.println(0);
+						return;
+					} else if(str.charAt(i-1) == '['){
+						answer = answer + temp;
+					}
+					stack.pop();
+					temp = temp / 3;
+					break;
 			}
 		}
 
-        if(!stack.isEmpty()){
+		if(!stack.isEmpty()){
 			answer = 0;
 		}
-        
+
 		System.out.println(answer);
 	}
 }
