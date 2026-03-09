@@ -6,13 +6,12 @@ public class Main {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		String str = br.readLine();
 
-		Stack<Character> stack = new Stack<>();
 		StringBuilder sb = new StringBuilder();
-
+		Stack<Character> stack = new Stack<>();
 		for(int i = 0 ; i < str.length() ; i++){
 			char c = str.charAt(i);
 
-			switch (c) {
+			switch (c){
 				case '+':
 				case '-':
 				case '*':
@@ -22,17 +21,21 @@ public class Main {
 					}
 					stack.push(c);
 					break;
+
 				case '(':
 					stack.push(c);
 					break;
+
 				case ')':
 					while(!stack.isEmpty() && stack.peek() != '('){
 						sb.append(stack.pop());
 					}
 					stack.pop();
 					break;
+
 				default:
 					sb.append(c);
+					break;
 			}
 		}
 
@@ -43,13 +46,13 @@ public class Main {
 		System.out.println(sb);
 	}
 
-	public static int priority(char operator){
-		if(operator == ')' || operator == '('){
+	public static int priority(char c){
+		if(c == '(' || c == ')'){
 			return 0;
-		} else if(operator == '*' || operator == '/'){
-			return 2;
-		} else if(operator == '+' || operator == '-'){
+		} else if(c == '+' || c == '-'){
 			return 1;
+		} else if(c == '*' || c == '/'){
+			return 2;
 		}
 
 		return -1;
