@@ -9,15 +9,15 @@ public class Main {
         int N = Integer.parseInt(st.nextToken());
         int M = Integer.parseInt(st.nextToken());
 
-        HashMap<String, Integer> map = new HashMap<>();
+		HashSet<String> set = new HashSet<>();
 
         for(int i = 0 ; i < N ; i++){
-            map.put(br.readLine(), 0);
+			set.add(br.readLine());
         }
 
         int answer = 0;
         for(int i = 0 ; i < M ; i++){
-           if(map.containsKey(br.readLine()))
+           if(set.contains(br.readLine()))
                answer++;
         }
 
