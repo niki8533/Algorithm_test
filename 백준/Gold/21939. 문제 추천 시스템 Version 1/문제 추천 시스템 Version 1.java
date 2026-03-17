@@ -1,74 +1,72 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.HashMap;
-import java.util.StringTokenizer;
-import java.util.TreeSet;
+import java.util.*;
+import java.io.*;
 
-//백준 - 문제 추천 시스템 Version1
 public class Main {
-    public static void main(String[] args) throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        StringBuilder sb = new StringBuilder();
-        HashMap<Integer, Integer> map = new HashMap<>();
-        TreeSet<Problem> set = new TreeSet<>();
-        StringTokenizer st;
+	public static void main(String[] args) throws IOException{
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		int N = Integer.parseInt(br.readLine());
 
-        int N = Integer.parseInt(br.readLine());
-        for(int i = 0 ; i < N ; i++){
-            st = new StringTokenizer(br.readLine());
-            int p = Integer.parseInt(st.nextToken());
-            int l = Integer.parseInt(st.nextToken());
-            set.add(new Problem(p, l));
-            map.put(p, l);
-        }
+		HashMap<Integer, Integer> map = new HashMap<>();
+		TreeSet<Problem> set = new TreeSet<>();
+		StringBuilder sb = new StringBuilder();
 
-        int M = Integer.parseInt(br.readLine());
-        for(int i = 0 ; i < M ; i++){
-            st = new StringTokenizer(br.readLine());
-            String command = st.nextToken();
-            switch (command){
-                case "recommend":
-                    int x = Integer.parseInt(st.nextToken());
-                    if(x == 1){
-                        sb.append(set.last().num).append("\n");
-                    } else {
-                        sb.append(set.first().num).append("\n");
-                    }
-                    break;
-                case "add":
-                    int p = Integer.parseInt(st.nextToken());
-                    int l = Integer.parseInt(st.nextToken());
-                    set.add(new Problem(p, l));
-                    map.put(p, l);
-                    break;
-                case "solved":
-                    p = Integer.parseInt(st.nextToken());
-                    l = map.get(p);
-                    set.remove(new Problem(p, l));
-                    map.remove(p);
-                    break;
-            }
-        }
+		for(int i = 0 ; i < N ; i++){
+			StringTokenizer st = new StringTokenizer(br.readLine(), " ");
+			int P = Integer.parseInt(st.nextToken());
+			int L = Integer.parseInt(st.nextToken());
 
-        System.out.println(sb);
-    }
+			map.put(P, L);
+			set.add(new Problem(P, L));
+		}
 
-    public static class Problem implements Comparable<Problem>{
-        int num;
-        int level;
+		int M = Integer.parseInt(br.readLine());
+		for(int i = 0 ; i < M ; i++){
+			StringTokenizer st = new StringTokenizer(br.readLine(), " ");
+			String command = st.nextToken();
 
-        public Problem(int num, int level){
-            this.num = num;
-            this.level = level;
-        }
+			switch (command){
+				case "add":
+					int P = Integer.parseInt(st.nextToken());
+					int L = Integer.parseInt(st.nextToken());
+					map.put(P, L);
+					set.add(new Problem(P, L));
+					break;
+				case "solved":
+					P = Integer.parseInt(st.nextToken());
+					L = map.get(P);
+					map.remove(P);
+					set.remove(new Problem(P, L));
+					break;
+				case "recommend":
+					int x = Integer.parseInt(st.nextToken());
+					if (x == 1) {
+						sb.append(set.last().P).append("\n");
+					} else {
+						sb.append(set.first().P).append("\n");
+					}
+					break;
+			}
+		}
 
-        @Override
-        public int compareTo(Problem o){
-            if(this.level == o.level){
-                return this.num - o.num;
-            }
-            return this.level - o.level;
-        }
-    }
+		System.out.println(sb);
+	}
+
+	public static class Problem implements Comparable<Problem>{
+		int P;
+		int L;
+
+		public Problem(int P, int L){
+			this.P = P;
+			this.L = L;
+		}
+
+		@Override
+		public int compareTo(Problem o){
+			if(this.L == o.L){
+				return this.P - o.P;
+ 			}
+
+			return this.L - o.L;
+		}
+	}
 }
