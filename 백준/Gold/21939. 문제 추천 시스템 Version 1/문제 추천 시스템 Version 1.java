@@ -2,13 +2,14 @@ import java.util.*;
 import java.io.*;
 
 public class Main {
-	public static void main(String[] args) throws IOException{
+	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringBuilder sb = new StringBuilder();
+
 		int N = Integer.parseInt(br.readLine());
 
+		TreeSet<Problem> tree = new TreeSet<>();
 		HashMap<Integer, Integer> map = new HashMap<>();
-		TreeSet<Problem> set = new TreeSet<>();
-		StringBuilder sb = new StringBuilder();
 
 		for(int i = 0 ; i < N ; i++){
 			StringTokenizer st = new StringTokenizer(br.readLine(), " ");
@@ -16,7 +17,7 @@ public class Main {
 			int L = Integer.parseInt(st.nextToken());
 
 			map.put(P, L);
-			set.add(new Problem(P, L));
+			tree.add(new Problem(P, L));
 		}
 
 		int M = Integer.parseInt(br.readLine());
@@ -24,26 +25,29 @@ public class Main {
 			StringTokenizer st = new StringTokenizer(br.readLine(), " ");
 			String command = st.nextToken();
 
+			int P = 0;
+			int L = 0;
 			switch (command){
+				case "recommend":
+					int x = Integer.parseInt(st.nextToken());
+
+					if(x == 1){
+						sb.append(tree.last().P + "\n");
+					} else sb.append(tree.first().P + "\n");
+					break;
 				case "add":
-					int P = Integer.parseInt(st.nextToken());
-					int L = Integer.parseInt(st.nextToken());
+					P = Integer.parseInt(st.nextToken());
+					L = Integer.parseInt(st.nextToken());
+
 					map.put(P, L);
-					set.add(new Problem(P, L));
+					tree.add(new Problem(P, L));
 					break;
 				case "solved":
 					P = Integer.parseInt(st.nextToken());
 					L = map.get(P);
+
 					map.remove(P);
-					set.remove(new Problem(P, L));
-					break;
-				case "recommend":
-					int x = Integer.parseInt(st.nextToken());
-					if (x == 1) {
-						sb.append(set.last().P).append("\n");
-					} else {
-						sb.append(set.first().P).append("\n");
-					}
+					tree.remove(new Problem(P, L));
 					break;
 			}
 		}
@@ -61,12 +65,13 @@ public class Main {
 		}
 
 		@Override
-		public int compareTo(Problem o){
+		public int compareTo(Problem o) {
 			if(this.L == o.L){
 				return this.P - o.P;
- 			}
+			}
 
 			return this.L - o.L;
 		}
+
 	}
 }
