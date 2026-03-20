@@ -10,39 +10,42 @@ public class Main {
 
 		StringBuilder sb = new StringBuilder();
 
-		for(int i = 0 ; i < T ; i++){
-			int K = Integer.parseInt(br.readLine());
+		for(int test_case = 0 ; test_case < T ; test_case++){
+			int k = Integer.parseInt(br.readLine());
 
 			TreeMap<Integer, Integer> map = new TreeMap<>();
-
-			for(int j = 0 ; j < K ; j++) {
+			for(int i = 0 ; i < k ; i++){
 				StringTokenizer st = new StringTokenizer(br.readLine(), " ");
-				String cal = st.nextToken();
-				int num = Integer.parseInt(st.nextToken());
+
+				String str = st.nextToken();
+				int n = Integer.parseInt(st.nextToken());
 
 				int key = 0;
 
-				if(cal.equals("I")){
-					map.put(num, map.getOrDefault(num, 0) + 1);
-				} else if(cal.equals("D")){
-					if(map.size() == 0) continue;
-					if(num == 1){
-						key = map.lastKey();
-					} else if(num == -1){
-						key = map.firstKey();
-					}
+				switch (str){
+					case "I":
+						map.put(n, map.getOrDefault(n, 0) + 1);
+						break;
+					case "D":
+						if(map.isEmpty()){
+							continue;
+						}
+						if(n == 1){
+							key = map.lastKey();
+						} else if(n == -1){
+							key = map.firstKey();
+						}
 
-					map.put(key, map.get(key) - 1);
+						map.put(key, map.get(key) - 1);
 
-					if(map.get(key) == 0){
-						map.remove(key);
-					}
+						if(map.get(key) == 0){
+							map.remove(key);
+						}
+						break;
 				}
 			}
 
-
-
-			if(map.size() == 0){
+			if(map.isEmpty()){
 				sb.append("EMPTY\n");
 			} else {
 				sb.append(map.lastKey() + " " + map.firstKey() + "\n");
