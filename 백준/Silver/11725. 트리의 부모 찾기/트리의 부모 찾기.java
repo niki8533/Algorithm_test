@@ -2,17 +2,18 @@ import java.util.*;
 import java.io.*;
 
 public class Main {
-	static boolean[] visited;
 	static ArrayList<ArrayList<Integer>> list = new ArrayList<>();
+	static boolean[] visited;
 	static int[] parent;
 
 	public static void main(String[] args) throws IOException{
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringBuilder sb = new StringBuilder();
+
 		int N = Integer.parseInt(br.readLine());
 
-		visited = new boolean[N+1];
-		parent = new int[N+1];
+		visited = new boolean[N];
+		parent = new int[N];
 
 		for(int i = 0 ; i < N+1 ; i++){
 			list.add(new ArrayList<>());
@@ -20,28 +21,29 @@ public class Main {
 
 		for(int i = 0 ; i < N - 1 ; i++){
 			StringTokenizer st = new StringTokenizer(br.readLine());
-			int x = Integer.parseInt(st.nextToken());
-			int y = Integer.parseInt(st.nextToken());
+			int x = Integer.parseInt(st.nextToken()) - 1;
+			int y = Integer.parseInt(st.nextToken()) - 1;
+
 			list.get(x).add(y);
 			list.get(y).add(x);
 		}
 
-		dfs(1);
+		dfs(0);
 
-		for(int i = 2 ; i < parent.length ; i++){
+		for(int i = 1 ; i < parent.length ; i++){
 			sb.append(parent[i] + "\n");
 		}
 
 		System.out.println(sb);
 	}
 
-	public static void dfs(int a){
-		visited[a] = true;
+	public static void dfs(int depth){
+		visited[depth] = true;
 
-		for(int i : list.get(a)){
+		for(int i : list.get(depth)){
 			if(!visited[i]){
 				dfs(i);
-				parent[i] = a;
+				parent[i] = depth+1;
 			}
 		}
 	}
