@@ -13,11 +13,13 @@ public class Main {
         // Please write your code here.
         int min = Integer.MAX_VALUE;
         for(int i = 1 ; i < n - 1 ; i++){
-            int distance = 1;
+            int distance = 0;
+            int prepix = 0;
 
-            for(int j = 0 ; j < n - 1 ; j++){
+            for(int j = 1 ; j < n ; j++){
                 if(i != j){
-                    distance = distance + (Math.abs(x[j] - x[j + 1]) + Math.abs(y[j] - y[j + 1]));
+                    distance = distance + (Math.abs(x[prepix] - x[j]) + Math.abs(y[prepix] - y[j]));
+                    prepix = j;
                 }
             }
 
