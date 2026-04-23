@@ -14,8 +14,9 @@ public class Main {
 
         int max = 0;
         for(int i = 0 ; i < N - 2 ; i++){
-            for(int j = i + 1 ; j < N ; j++){
-                max = Math.max(max, arr[i] + arr[j]);
+            for(int j = 0 ; j < N ; j++){
+                if(j != i - 1 && j != i && j != i+1)
+                    max = Math.max(max, arr[i] + arr[j]);
             }
         }
 
