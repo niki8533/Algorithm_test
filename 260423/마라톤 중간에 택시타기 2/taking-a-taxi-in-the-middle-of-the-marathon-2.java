@@ -14,12 +14,12 @@ public class Main {
         int min = Integer.MAX_VALUE;
         for(int i = 1 ; i < n - 1 ; i++){
             int distance = 0;
-            int prepix = 0;
+            int prefix = 0;
 
             for(int j = 1 ; j < n ; j++){
                 if(i != j){
-                    distance = distance + (Math.abs(x[prepix] - x[j]) + Math.abs(y[prepix] - y[j]));
-                    prepix = j;
+                    distance = distance + (Math.abs(x[prefix] - x[j]) + Math.abs(y[prefix] - y[j]));
+                    prefix = j;
                 }
             }
 
