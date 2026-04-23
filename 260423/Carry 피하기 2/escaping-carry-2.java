@@ -38,7 +38,8 @@ public class Main {
                     if(!carry)
                         sum = arr[i]+arr[j]+arr[k];
 
-                    max = Math.max(sum, max);
+                    if(sum != 0)
+                        max = Math.max(sum, max);
                 }
             }
         }
