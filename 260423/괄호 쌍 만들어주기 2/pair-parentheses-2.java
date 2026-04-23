@@ -17,11 +17,12 @@ public class Main {
                 stack.push(cp);
             }
             else if(c == ')' && cp == ')'){
-                stack.push(c);
-                stack.push(cp);
+                count++;
+                stack.pop();
+                stack.pop();
             }
         }
 
-        System.out.println(stack.size() / 2);
+        System.out.println(count*2);
     }
 }
