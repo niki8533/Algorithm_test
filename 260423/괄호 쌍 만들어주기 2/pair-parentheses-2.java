@@ -6,23 +6,19 @@ public class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         String str = br.readLine();
 
-        int count = 0;
-        Stack<Character> stack = new Stack<>();
+        int cnt = 0;
+        int answer = 0;
         for(int i = 0 ; i < str.length() - 1 ; i++){
             char c = str.charAt(i);
             char cp = str.charAt(i+1);
 
             if(c == '(' && cp == '('){
-                stack.push(c);
-                stack.push(cp);
-            }
-            else if(c == ')' && cp == ')'){
-                count++;
-                stack.pop();
-                stack.pop();
+                cnt++;
+            } else if(c == ')' && cp == ')'){
+                answer += cnt;
             }
         }
 
-        System.out.println(count*2);
+        System.out.println(answer);
     }
 }
