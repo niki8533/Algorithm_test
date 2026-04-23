@@ -17,13 +17,12 @@ public class Main {
             if(ch == 'C'){
                 c++;
             } else if(ch == 'O'){
-                o++;
+                o += c;
             } else if(ch == 'W'){
-                w++;
+                w += o;
             }
         }
 
-        int answer = c*o*w;
-        System.out.println(answer);
+        System.out.println(w);
     }
 }
