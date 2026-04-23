@@ -13,10 +13,19 @@ public class Main {
         // Please write your code here.
         int min = Integer.MAX_VALUE;
         for(int i = 1 ; i < n - 1 ; i++){
-            int distance = (Math.abs(x[0] - x[i]) + Math.abs(y[0] - y[i])) + Math.abs(x[i] - x[n-1]) + Math.abs(y[i] - y[n - 1]);
+            int distance = 0;
+
+            for(int j = 0 ; j < n - 2 ; j++){
+                if(i == j){
+                    continue;
+                }
+                distance = distance + (Math.abs(x[j] - x[j + 1]) + Math.abs(y[j] - y[j + 1]));
+            }
+
+            System.out.println(distance);
             min = Math.min(min, distance);
         }
-
+        System.out.println();
         System.out.println(min);
 
     }
