@@ -13,17 +13,16 @@ public class Main {
         }
 
         // Please write your code here.
-        int count = 1;
+        int count = 0;
         for(int i = 0 ; i < n ; i++){
             for(int j = 0 ; j < m ; j++){
-                //if(!arr[i][j].equals("L") || !arr[i][j].equals("E")) continue;
-
                 for(int d = 0 ; d < 8 ; d++){
                     StringBuilder sb = new StringBuilder();
                     int x = i;
                     int y = j;
+                    sb.append(arr[x][y]);
 
-                    for(int k = 0 ; k < 3 ; k++){
+                    for(int k = 0 ; k < 2 ; k++){
                         int nx = x + dx[d];
                         int ny = y + dy[d];
 
@@ -34,7 +33,7 @@ public class Main {
                         }
                     }
 
-                    if(sb.toString().equals("LEE") || sb.toString().equals("EEL")){
+                    if(sb.toString().equals("LEE")){
                         count++;
                     }
                 }
