@@ -15,8 +15,11 @@ public class Main {
                 
                 sum += arr[j];
 
-                int avg = sum / (Math.abs(i - j)  + 1);
-
+                int length = Math.abs(i - j)  + 1;
+                if(sum % length == 0){
+                    int avg = sum / length;
+                }
+                
                 for(int k = i ; k < j ; k++){
                     if(arr[k] == avg){
                         count++;
