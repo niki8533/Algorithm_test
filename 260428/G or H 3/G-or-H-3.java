@@ -28,7 +28,7 @@ public class Main {
             int sum = arr[i][1];
             for(int j = i + 1 ; j < N ; j++){
                 sum += arr[j][1];
-                if(arr[j][0] - arr[i][0] == K){
+                if(arr[j][0] - arr[i][0] <= K){
                     max = Math.max(max, sum);
                 }
             }
@@ -37,7 +37,7 @@ public class Main {
         if(N == 1){
             max = arr[0][1];
         }
-        
+
         System.out.println(max);
     }
 }
