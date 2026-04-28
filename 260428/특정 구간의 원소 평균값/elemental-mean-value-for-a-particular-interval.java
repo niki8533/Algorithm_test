@@ -16,8 +16,9 @@ public class Main {
                 sum += arr[j];
 
                 int length = Math.abs(i - j)  + 1;
+                int avg = 0
                 if(sum % length == 0){
-                    int avg = sum / length;
+                    avg = sum / length;
                 }
 
                 for(int k = i ; k <= j ; k++){
