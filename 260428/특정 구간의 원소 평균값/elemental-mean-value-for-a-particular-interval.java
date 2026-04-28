@@ -19,8 +19,8 @@ public class Main {
                 if(sum % length == 0){
                     int avg = sum / length;
                 }
-                
-                for(int k = i ; k < j ; k++){
+
+                for(int k = i ; k <= j ; k++){
                     if(arr[k] == avg){
                         count++;
                         break;
