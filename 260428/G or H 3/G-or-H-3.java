@@ -23,7 +23,7 @@ public class Main {
             return o1[0] - o2[0];
         });
 
-        int max = 0;
+        int max = arr[0][1];
         for(int i = 0 ; i < N - 1 ; i++){
             int sum = arr[i][1];
             for(int j = i + 1 ; j < N ; j++){
@@ -32,10 +32,6 @@ public class Main {
                     max = Math.max(max, sum);
                 }
             }
-        }
-
-        if(N == 1){
-            max = arr[0][1];
         }
 
         System.out.println(max);
