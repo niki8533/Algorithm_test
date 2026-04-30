@@ -18,14 +18,14 @@ public class Main {
         Arrays.sort(temp);
         
         int max = 0;
-        for(int i = 0 + k ; i < temp[n-1] - k ; i++){
+        for(int i = 0 + k ; i <= temp[n-1] - k ; i++){
             int candy = 0;
             for(int j = 0 ; j < n ; j++){
                 if(positions[j] >= i - k && positions[j] <= i + k){
                     candy += candies[j];
                 }
             }
-            
+
             max = Math.max(max, candy);
         }
 
