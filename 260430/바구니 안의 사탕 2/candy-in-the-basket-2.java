@@ -17,7 +17,7 @@ public class Main {
         }
         Arrays.sort(temp);
         
-        int max = 0;
+        int max = candies[0];
         for(int i = 0 + k ; i <= temp[n-1] - k ; i++){
             int candy = 0;
             for(int j = 0 ; j < n ; j++){
