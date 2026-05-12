@@ -23,7 +23,7 @@ public class Main {
                         continue;
                     }
 
-                    int distance = (int)(Math.pow(Math.abs(arr[j][0] - arr[k][0]), 2) + Math.pow(Math.abs(arr[j][1] - arr[k][1]), 2));
+                    int distance = (int)(Math.pow(arr[j][0] - arr[k][0], 2) + Math.pow(arr[j][1] - arr[k][1], 2));
                     min = Math.min(min, distance);
                 }
             }
