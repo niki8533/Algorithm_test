@@ -1,35 +1,30 @@
-import java.util.*;
+import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
-        int[][] arr = new int[n][2];
+        int[] x1 = new int[n];
+        int[] x2 = new int[n];
         for (int i = 0; i < n; i++) {
-            arr[i][0] = sc.nextInt();
-            arr[i][1] = sc.nextInt();
+            x1[i] = sc.nextInt();
+            x2[i] = sc.nextInt();
         }
-        // Please write your code here.
-        Arrays.sort(arr, (o1, o2) -> {
-            return o1[0] - o2[0];
-        });
 
         int count = 0;
         for(int i = 0 ; i < n ; i++){
-            boolean isIsolate = true;
+            boolean over = false;
 
             for(int j = 0 ; j < n ; j++){
-                if(i ==j) continue;
+                if(i == j) continue;
 
-                if ((arr[i][0] <= arr[j][0] && arr[i][1] >= arr[j][1]) || 
-                    (arr[i][0] >= arr[j][0] && arr[i][1] <= arr[j][1])) {
-                    isIsolate = false;
-                break;
-}
+                if(x1[i] > x1[j] && x2[i] < x2[j] || x1[i] < x1[j] && x2[i] > x2[j]){
+                    over = true;
+                }
             }
 
-            if(isIsolate){
+            if(!over){
                 count++;
-            }   
+            }
         }
 
         System.out.println(count);
