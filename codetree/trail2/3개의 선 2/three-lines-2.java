@@ -16,8 +16,8 @@ public class Main {
         int answer = 0;
         for(int i = 0 ; i <= 10 ; i++){
             for(int j = 0 ; j <= 10 ; j++){
+                boolean canPass = true;
                 for(int k = 0 ; k <= 10 ; k++){
-                    boolean canPass = true;
 
                     for(int l = 0 ; l < N ; l++){
                         if(arr[l][0] == i || arr[l][0] == j || arr[l][0] == k){
@@ -28,12 +28,12 @@ public class Main {
                         }
                         else canPass = false;
                     }
+                }
 
-                    if(canPass){
-                        answer = 1;
-                        System.out.println(answer);
-                        return;
-                    }
+                if(canPass){
+                    answer = 1;
+                    System.out.println(answer);
+                    return;
                 }
             }
         }
