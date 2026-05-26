@@ -16,15 +16,20 @@ public class Main {
         int min = Integer.MAX_VALUE;
         for(int i = 0 ; i < N ; i++){
             arr[i] *= 2;
-            
             for(int j = 0 ; j < N ; j++){
-                int sum = 0;
-                for(int k = 0 ; k < N - 1 ; k++){
+                int[] temp = new int[N-1];
+                int index = 0;
+                for(int k = 0 ; k < N ; k++){
                     if(k == j){
                         continue;
                     }
 
-                    sum += (Math.abs(arr[k] - arr[k + 1]));
+                    temp[index++] = arr[k];
+                }
+
+                int sum = 0;
+                for(int k = 0 ; k < N - 2 ; k++){
+                    sum += Math.abs(temp[k] - temp[k + 1]);
                 }
                 min = Math.min(min, sum);
             }
