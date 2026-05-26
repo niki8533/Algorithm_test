@@ -12,7 +12,7 @@ public class Main {
 
         int max = 0;
         while(C > 0){
-            for(int i = 0 ; i <= C/A ; i++){
+            for(int i = 0 ; i <= C/B ; i++){
                 int sum = B*i;
 
                 int temp = C - sum;
