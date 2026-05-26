@@ -30,7 +30,7 @@ public class Main {
 
                     canPass = true;
                     for(int l = 0 ; l < N ; l++){
-                        if(arr[l][0] == i && arr[l][0] == j && arr[l][1] == k){
+                        if(arr[l][0] != i && arr[l][0] != j && arr[l][1] != k){
                             canPass = false;
                             break;
                         }
@@ -41,7 +41,7 @@ public class Main {
 
                     canPass = true;
                     for(int l = 0 ; l < N ; l++){
-                        if(arr[l][0] == i && arr[l][1] == j && arr[l][1] == k){
+                        if(arr[l][0] != i && arr[l][1] != j && arr[l][1] != k){
                             canPass = false;
                             break;
                         }
@@ -52,7 +52,7 @@ public class Main {
 
                     canPass = true;
                     for(int l = 0 ; l < N ; l++){
-                        if(arr[l][1] == i && arr[l][1] == j && arr[l][1] == k){
+                        if(arr[l][1] != i && arr[l][1] != j && arr[l][1] != k){
                             canPass = false;
                             break;
                         }
