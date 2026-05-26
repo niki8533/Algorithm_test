@@ -15,18 +15,21 @@ public class Main {
         }
 
         int max = 0;
-        boolean[] cup = new boolean[4];
+        
         for(int i = 1 ; i <= 3 ; i++){
             int count = 0;
-            for(int j = 0 ; j < 3 ; j++){
+            boolean[] cup = new boolean[4];
+            for(int j = 1 ; j <= 3 ; j++){
                 if(i == j){
                     cup[j] = true;
                 } else cup[j] = false;
             }
 
             for(int j = 0 ; j < N ; j++){
-                cup[arr[j][0]] = !cup[arr[j][0]];
-                cup[arr[j][1]] = !cup[arr[j][1]];
+                if(cup[arr[j][0]] || cup[arr[j][1]]){
+                    cup[arr[j][0]] = !cup[arr[j][0]];
+                    cup[arr[j][1]] = !cup[arr[j][1]];
+                }
 
                 if(cup[arr[j][2]]){
                     count++;
