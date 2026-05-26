@@ -8,15 +8,18 @@ public class Main {
         int count = 0;
         for(int i = x ; i <= y ; i++){
             String str = String.valueOf(i);
-            String[] arr = str.split("");
             
-            int index = arr.length - 1;
+            int index = str.length() - 1;
             boolean isPal = true;
-            for(int j = 0 ; j < arr.length / 2 ; j++){
-                if(!arr[j].equals(arr[index])){
-                    isPal = false;
-                }
+            for(int j = 0 ; j < str.length() / 2 ; j++){
+                char c1 = str.charAt(j);
+                char c2 = str.charAt(index);
 
+                if(c1 != c2){
+                    isPal = false;
+
+                }
+                
                 index--;
             }
 
