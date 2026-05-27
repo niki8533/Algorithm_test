@@ -15,23 +15,18 @@ public class Main {
         int min = Integer.MAX_VALUE;
         for(int i = 1 ; i < N ; i++){
             int count = 0;
+            HashSet<String> set = new HashSet<>();
             for(int j = 0 ; j <= N - i ; j++){
-                String temp = "";
-                for(int k = 0 ; k < i ; k++){
-                    temp += arr[k];
-                }
 
                 String compare = "";
                 for(int k = j ; k < j + i ; k++){
                     compare += arr[k];
                 }
-                
-                if(compare.equals(temp)){
-                    count++;
-                }
+                set.add(compare);
+                count++;
             }
 
-            if(count == 1){
+            if(count == set.size()){
                 min = Math.min(min, i);
             }
         }
