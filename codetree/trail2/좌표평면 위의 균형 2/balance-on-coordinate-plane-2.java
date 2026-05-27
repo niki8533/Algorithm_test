@@ -26,28 +26,26 @@ public class Main {
             maxY = Math.max(maxY, arr[i][1]);
         }
 
-        int midX = (minX + maxX) / 2;
-        int midY = (minY + maxY) / 2;
+        int answer = Integer.MAX_VALUE;
+        for(int x = minX ; x <= maxX ; x++){
+            for(int y = minY ; y <= maxY ; y++){
+                int count1 = 0;
+                int count2 = 0;
+                int count3 = 0;
+                int count4 = 0;
 
-        int count1 = 0;
-        int count2 = 0;
-        int count3 = 0;
-        int count4 = 0;
-        for(int i = 0 ; i < N ; i++){
-            if(arr[i][0] >= minX && arr[i][0] < midX && arr[i][1] >= minY && arr[i][1] < midY){
-                count1++;
-            }
-            else if(arr[i][0] >= midX && arr[i][0] <= maxX && arr[i][1] >= minY && arr[i][1] < midY){
-                count2++;
-            }
-            else if(arr[i][0] >= minX && arr[i][0] < midX && arr[i][1] >= midY && arr[i][1] <= maxY){
-                count3++;
-            }
-            else if(arr[i][0] >= midX && arr[i][0] <= maxX && arr[i][1] >= midY && arr[i][1] <= maxY){
-                count4++;
+                for(int i = 0 ; i < N ; i++){
+                    if(arr[i][0] < x && arr[i][1] < y) count1++;
+                    else if(arr[i][0] < x && arr[i][1] >= y) count2++;
+                    else if(arr[i][0] >= x && arr[i][1] < y) count3++;
+                    else count4++;
+                }
+                int max = Math.max(count1, Math.max(count2, Math.max(count3, count4)));
+                answer = Math.min(answer, max);
             }
         }
 
-        System.out.println(Math.max(count1, Math.max(count2, Math.max(count3, count4))));
+        System.out.println(answer);
+
     }
 }
