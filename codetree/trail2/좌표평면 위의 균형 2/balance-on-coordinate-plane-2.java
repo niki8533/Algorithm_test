@@ -37,13 +37,13 @@ public class Main {
             if(arr[i][0] >= minX && arr[i][0] < midX && arr[i][1] >= minY && arr[i][1] < midY){
                 count1++;
             }
-            else if(arr[i][0] >= midX && arr[i][0] < maxX && arr[i][1] >= minY && arr[i][1] < midY){
+            else if(arr[i][0] >= midX && arr[i][0] <= maxX && arr[i][1] >= minY && arr[i][1] < midY){
                 count2++;
             }
-            else if(arr[i][0] >= minX && arr[i][0] < midX && arr[i][1] >= midY && arr[i][1] < maxY){
+            else if(arr[i][0] >= minX && arr[i][0] < midX && arr[i][1] >= midY && arr[i][1] <= maxY){
                 count3++;
             }
-            else if(arr[i][0] >= midX && arr[i][0] < maxX && arr[i][1] >= midY && arr[i][1] < maxY){
+            else if(arr[i][0] >= midX && arr[i][0] <= maxX && arr[i][1] >= midY && arr[i][1] <= maxY){
                 count4++;
             }
         }
