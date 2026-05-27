@@ -19,8 +19,8 @@ public class Main {
         int max = 0;
         for(int i = 1 ; i <= N ; i++){
             int temp = arr[i];
-            int sum = 0;            
-            for(int j = 0 ; j < M ; j++){
+            int sum = temp;            
+            for(int j = 1 ; j < M ; j++){
                 temp = arr[temp];
                 sum += temp;
             }
