@@ -21,6 +21,7 @@ public class Main {
                 temp *= 2;
                 
                 if(arr[j][0] > temp || temp > arr[j][1]){
+                    System.out.println(arr[j][0] + " " + temp + " " + arr[j][1]);
                     isIn = false;
                     break;
                 }
