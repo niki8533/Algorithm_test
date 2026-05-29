@@ -16,10 +16,19 @@ public class Main {
 
         Arrays.sort(arr);
 
+        // for(int i = 0 ; i < N ; i++){
+        //     System.out.println(arr[i]);
+        // }
+
+        // System.out.println();
+
+
         int max = 1;
-        for(int i = 1 ; i < N ; i++){
-            if(Math.abs(arr[0] - arr[i]) <= K){
-                max = Math.max(max, (i + 1));
+        for(int i = 0 ; i < N ; i++){
+            for(int j = i + 1 ; j < N ; j++){
+                if(Math.abs(arr[i] - arr[j]) <= K){
+                    max = Math.max(max, ((j - i) + 1));
+                }
             }
         }
 
