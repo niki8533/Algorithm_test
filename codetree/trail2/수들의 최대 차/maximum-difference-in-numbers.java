@@ -16,12 +16,6 @@ public class Main {
 
         Arrays.sort(arr);
 
-        // for(int i = 0 ; i < N ; i++){
-        //     System.out.println(arr[i]);
-        // }
-
-        // System.out.println();
-
 
         int max = 1;
         for(int i = 0 ; i < N ; i++){
