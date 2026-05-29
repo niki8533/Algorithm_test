@@ -14,14 +14,13 @@ public class Main {
         }
 
         int min = Integer.MAX_VALUE;
-        for(int i = 1 ; i <= 10 ; i++){
+        for(int i = 1 ; i <= arr[0][1] / 2 ; i++){
             boolean isIn = true;
             int temp = i;
             for(int j = 0 ; j < N ; j++){
                 temp *= 2;
                 
                 if(arr[j][0] > temp || temp > arr[j][1]){
-                    System.out.println(arr[j][0] + " " + temp + " " + arr[j][1]);
                     isIn = false;
                     break;
                 }
