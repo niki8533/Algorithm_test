@@ -30,25 +30,15 @@ public class Main {
     }
 
     public static boolean isPossible(int maxVal, int[] arr){
-        int[] availableIndices = new int[N];
-        int cnt = 0;
+        int lastIndex = 0;
+        for(int i = 1 ; i < N ; i++){
+            if(arr[i] <= maxVal){
+                if(i - lastIndex > K){
+                    return false;
+                }
 
-        for(int i = 0 ; i < N ; i++){
-            if(arr[i] <= maxVal)
-                availableIndices[cnt++] = i;
-        }
-
-        if(cnt == 0 || availableIndices[0] != 0)
-            return false;
-
-        if(availableIndices[cnt - 1] != N - 1)
-            return false;
-
-
-        for(int i = 1 ; i < cnt ; i++){
-            int dist = availableIndices[i] - availableIndices[i-1];
-            if(dist > K)
-                return false;
+                lastIndex++;
+            }
         }
 
         return true;
