@@ -19,7 +19,7 @@ public class Main {
         }
 
         int minmax = Integer.MAX_VALUE;
-        for(int i = 1 ; i <= max ; i++){
+        for(int i = Math.max(arr[0], arr[N-1]) ; i <= max ; i++){
             if(isPossible(i, arr)){
                 minmax = Math.min(minmax, i);
             }
