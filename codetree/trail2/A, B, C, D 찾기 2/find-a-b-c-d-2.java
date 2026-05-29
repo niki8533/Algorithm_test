@@ -13,9 +13,9 @@ public class Main {
 
         Collections.sort(list);
 
-        for(int a = 1 ; a <= 7 ; a++){
-            for(int b = a ; b <= 8 ; b++){
-                for(int c = b ; c <= 9 ; c++){
+        for(int a = 1 ; a <= 10 ; a++){
+            for(int b = a ; b <= 10 ; b++){
+                for(int c = b ; c <= 10 ; c++){
                     for(int d = c ; d <= 10 ; d++){
                         ArrayList<Integer> temp = new ArrayList<>();
                         temp.add(a);
