@@ -14,9 +14,9 @@ public class Main {
         Arrays.sort(arr);
 
         int min = Integer.MAX_VALUE;
-        for(int i = 0 ; i < N ; i++){
-            int low = arr[i];
-            int high = arr[i] + 17;
+        for(int i = 1 ; i <= 83 ; i++){
+            int low = i;
+            int high = i + 17;
             int cost = 0;
             for(int j = 0 ; j < N ; j++){
                 if(arr[j] < low){
