@@ -30,6 +30,11 @@ public class Main {
             }
         }
 
+        if(map.size() == 0){
+            System.out.print(0);
+            return;
+        }
+
         int[][] answer = new int[map.size()][2];
         int cnt = 0;
         for(int i : map.keySet()){
