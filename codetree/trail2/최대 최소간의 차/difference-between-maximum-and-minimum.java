@@ -19,14 +19,14 @@ public class Main {
         }
 
         int min = Integer.MAX_VALUE;
-        for(int a = 1 ; a <= (max+2) ; a++){
+        for(int a = 1 ; a <= (max + K) ; a++){
             int cost = 0;
             for(int i = 0 ; i < N ; i++){
-                if(a <= arr[i] && arr[i] <= a + 2){
+                if(a <= arr[i] && arr[i] <= a + K){
                     continue;
                 } else if(arr[i] < a){
                     cost += (a - arr[i]);
-                } else cost += (arr[i] - (a + 2));
+                } else cost += (arr[i] - (a + K));
             }
 
             min = Math.min(min, cost);
