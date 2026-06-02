@@ -1,32 +1,28 @@
-import java.util.*;
-import java.io.*;
+import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) throws IOException{
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        int N = Integer.parseInt(br.readLine());
-
-        int[] arr = new int[N];
-        for(int i = 0 ; i < N ; i++){
-            arr[i] = Integer.parseInt(br.readLine());
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int[] arr = new int[n];
+        for (int i = 0; i < n; i++) {
+            arr[i] = sc.nextInt();
         }
-
-        Arrays.sort(arr);
-
+        // Please write your code here.
         int min = Integer.MAX_VALUE;
         for(int i = 1 ; i <= 83 ; i++){
-            int low = i;
-            int high = i + 17;
             int cost = 0;
-            for(int j = 0 ; j < N ; j++){
-                if(arr[j] < low){
-                    cost += (low - arr[j]) * (low - arr[j]);
-                } else if(arr[j] > high){
-                    cost += (arr[j] - high) * (arr[j] - high);
-                }
+            for(int j = 0 ; j < n ; j++){
+                if(i <= arr[j] && arr[j] <= i + 17){
+                    continue;
+                } else if(arr[j] < i){
+                    cost += (i - arr[j]) * (i - arr[j]);
+                } else cost += (arr[j] - (i + 17)) * (arr[j] - (i + 17));
             }
-            min = Math.min(min, cost);
+
+            min = Math.min(cost, min);
         }
+
         System.out.println(min);
     }
 }
