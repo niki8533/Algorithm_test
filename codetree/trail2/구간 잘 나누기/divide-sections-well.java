@@ -19,29 +19,29 @@ public class Main {
         }
 
         int mid = 0;
+        int answer = 0;
         while(start <= end){
             mid = (start + end) / 2;
 
             boolean isPossible = false;
-            int count = 0;
+            int count = 1;
             int sum = 0;
             for(int i = 0 ; i < N ; i++){
                 sum += arr[i];
 
-                if(sum == mid){
-                    isPossible = true;
+                if(sum > mid){
                     count++;
-                    sum = 0;
-                }else if(sum > mid){
-                    isPossible = false;
                     sum = 0;
                     i--;
                 }
             }
 
-            if(isPossible){
+            if(count <= M){
+                answer = mid;
                 end = mid - 1;
-            } else start++;
+            }else{
+                start = mid + 1;
+            }
         }
 
         System.out.println(start);
