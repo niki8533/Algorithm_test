@@ -13,18 +13,17 @@ public class Main {
         int c = Integer.parseInt(st.nextToken());
         int d = Integer.parseInt(st.nextToken());
 
-        int clean = (b - a) + (d - c);
+        int max = Math.max(b, d);
+        int min = Math.min(a, c);
 
-        if(a <= c && c <= b){
-            clean -= (b - c);
-        } else if(a <= d && d <= b){
-            clean -= (d - a);
-        } else if(c <= a && a <= d){
-            clean -= (d - a);
-        } else if(c <= b && b <= d){
-            clean -= (b - c);
+        int clean = max - min;
+
+        if(b < c){
+            clean -= (c - b);
+        } else if(d < a){
+            clean -= (a - d);
         }
-
+        
         System.out.println(clean);
     }
 }
