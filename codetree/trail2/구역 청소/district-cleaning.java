@@ -16,7 +16,7 @@ public class Main {
         int clean = (b - a) + (d - c);
 
         if(a <= c && c <= b){
-            clean -= (c - b);
+            clean -= (b - c);
         } else if(a <= d && d <= b){
             clean -= (d - a);
         } else if(c <= a && a <= d){
