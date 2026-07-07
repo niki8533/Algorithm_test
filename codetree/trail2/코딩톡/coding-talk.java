@@ -24,6 +24,10 @@ public class Main {
                 }
             }
 
+            if(u[p-1] == u[p-2]){
+                set.remove(c[p-2]);
+            }
+
             for(char ch : set){
                 System.out.print(ch + " ");
             }
