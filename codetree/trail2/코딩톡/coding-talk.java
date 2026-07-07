@@ -16,6 +16,7 @@ public class Main {
         for(int i = 0 ; i < N ; i++){
             set.add((char)('A' + i));
         }
+
         
         if(u[p-1] > 0){
             for(int i = p - 1 ; i < M ; i++){
@@ -24,8 +25,12 @@ public class Main {
                 }
             }
 
-            if(u[p-1] == u[p-2]){
-                set.remove(c[p-2]);
+            for(int j = p - 2 ; j >= 0 ; j--){
+                if(u[p-1] != u[j]){
+                    break;
+                }
+
+                set.remove(c[j]);
             }
 
             for(char ch : set){
