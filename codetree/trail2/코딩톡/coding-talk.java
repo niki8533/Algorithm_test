@@ -17,14 +17,16 @@ public class Main {
             set.add((char)('A' + i));
         }
         
-        for(int i = p - 1 ; i < M ; i++){
-            if(set.contains(c[i])){
-                set.remove(c[i]);
+        if(u[p-1] > 0){
+            for(int i = p - 1 ; i < M ; i++){
+                if(set.contains(c[i])){
+                    set.remove(c[i]);
+                }
             }
-        }
 
-        for(char ch : set){
-            System.out.print(ch + " ");
+            for(char ch : set){
+                System.out.print(ch + " ");
+            }
         }
     }
 }
