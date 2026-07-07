@@ -18,7 +18,7 @@ public class Main {
 
         int distance = 0;
         for(int i = 0 ; i < N - 1 ; i++){
-            int diff = Math.abs(b[i] - a[i]);
+            int diff = a[i] - b[i];
             a[i+1] += diff;
             distance += diff;
         }
