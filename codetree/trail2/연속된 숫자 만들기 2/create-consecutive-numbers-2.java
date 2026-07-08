@@ -20,9 +20,6 @@ public class Main {
         else if((arr[2] - arr[1]) > 2 && (arr[1] - arr[0]) > 2){
             count = 2;
         }
-        else if((arr[2] - arr[1]) > 2 || (arr[1] - arr[0]) > 2){
-            count = 2;
-        }
         else if((arr[1] - arr[0]) == 2 || (arr[2] - arr[1])== 2){
             count = 1;
         }
