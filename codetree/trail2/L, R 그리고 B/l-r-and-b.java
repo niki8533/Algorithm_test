@@ -1,10 +1,11 @@
-import java.util.Scanner;
+import java.util.*;
+
 public class Main {
     static int[] dx = {1, -1, 0, 0};
     static int[] dy = {0, 0, 1, -1};
     static boolean[][] visited = new boolean[10][10];
     static char[][] boards = new char[10][10];
-    static int answer= Integer.MAX_VALUE;
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int lx = 0;
@@ -20,27 +21,37 @@ public class Main {
                 }
             }
         }
-        // Please write your code here.
-        dfs(lx, ly, 1);
+
+        int answer = bfs(lx, ly);
         System.out.println(answer);
-        
     }
 
-    public static void dfs(int x, int y, int distance){
-        if(boards[x][y] == 'B'){
-            answer = Math.min(distance, answer);
-            return;
-        }
+    public static int bfs(int sx, int sy){
+        Queue<int[]> q = new LinkedList<>();
 
-        for(int i = 0 ; i < 4 ; i++){
-            int nx = x + dx[i];
-            int ny = x + dy[i];
+        q.offer(new int[]{sx, sy, 0});
+        visited[sx][sy] = true;
 
-            if(nx >= 0 && nx < 10 && ny >= 0 && ny < 10 && !visited[nx][ny] && boards[nx][ny] != 'R'){
-                visited[nx][ny] = true;
-                dfs(nx, ny, distance+1);
-                visited[nx][ny] = false;
+        while(!q.isEmpty()){
+            int[] cur = q.poll();
+            int x = cur[0];
+            int y = cur[1];
+            int d = cur[2];
+
+            if(boards[x][y] == 'B'){
+                return d - 1;
+            }
+
+            for(int i = 0 ; i < 4 ; i++){
+                int nx = x + dx[i];
+                int ny = y + dy[i];
+
+                if(nx >= 0 && nx < 10 && ny >= 0 && ny < 10 && !visited[nx][ny] && boards[nx][ny] != 'R'){
+                    visited[nx][ny] = true;
+                    q.offer(new int[]{nx, ny, d + 1});
+                }
             }
         }
+        return -1;
     }
 }
