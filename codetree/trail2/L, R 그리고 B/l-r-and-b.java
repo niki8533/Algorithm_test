@@ -4,6 +4,7 @@ public class Main {
     static int[] dy = {0, 0, 1, -1};
     static boolean[][] visited = new boolean[10][10];
     static char[][] boards = new char[10][10];
+    static int answer= Integer.MAX_VALUE;
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int lx = 0;
@@ -20,14 +21,15 @@ public class Main {
             }
         }
         // Please write your code here.
-        int answer = dfs(lx, ly, 0);
+        dfs(lx, ly, 1);
         System.out.println(answer);
         
     }
 
-    public static int dfs(int x, int y, int distance){
+    public static void dfs(int x, int y, int distance){
         if(boards[x][y] == 'B'){
-            return distance;
+            answer = Math.min(distance, answer);
+            return;
         }
 
         for(int i = 0 ; i < 4 ; i++){
@@ -36,7 +38,7 @@ public class Main {
 
             if(nx >= 0 && nx < 10 && ny >= 0 && ny < 10 && !visited[nx][ny] && boards[nx][ny] != 'R'){
                 visited[nx][ny] = true;
-                dfs(nx, ny, distance++);
+                dfs(nx, ny, distance+1);
                 visited[nx][ny] = false;
             }
         }
