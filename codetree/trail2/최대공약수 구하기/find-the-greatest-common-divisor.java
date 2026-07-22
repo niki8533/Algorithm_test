@@ -12,7 +12,7 @@ public class Main {
     public static int max(int n, int m){
         int divisor = 1;
         int max = 0;
-        while(divisor < n || divisor < m){
+        while(divisor <= n || divisor <= m){
             if(n % divisor == 0 && m % divisor == 0){
                 max = Math.max(max, divisor);
             }
