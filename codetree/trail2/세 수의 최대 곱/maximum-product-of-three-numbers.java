@@ -11,8 +11,11 @@ public class Main {
         // Please write your code here.
 
         Arrays.sort(arr);
-
-        if(arr[0] * arr[1] > arr[n - 3] * arr[n-2]){
+        
+        if(arr[n-1] < 0){
+            System.out.println(arr[n-3]*arr[n-2]*arr[n-1]);
+        }
+        else if(arr[0] * arr[1] > arr[n - 3] * arr[n-2]){
             System.out.println(arr[0]*arr[1]*arr[n-1]);
         } else {
             System.out.println(arr[n-3]*arr[n-2]*arr[n-1]);
