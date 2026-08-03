@@ -14,7 +14,7 @@ public class Main {
     }
 
     public static int dateTime(int a, int b, int c){
-        if(a > 11 || b > 11 || c > 11){
+        if(a >= 11 || b >= 11 || c >= 11){
             int time = 0;
             time += (a - 11) * 24 * 60;
             time += (b - 11) * 60;
