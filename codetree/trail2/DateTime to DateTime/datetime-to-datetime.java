@@ -10,21 +10,18 @@ public class Main {
         int b = Integer.parseInt(st.nextToken());
         int c = Integer.parseInt(st.nextToken());
 
-        System.out.println(dateTime(a, b, c));
+        int answer = dateTime(a, b, c);
+        if(answer < 0){
+            System.out.println(-1);
+        } else System.out.println(answer);
     }
 
     public static int dateTime(int a, int b, int c){
-        if(a > 11 || b > 11 || c > 11){
-            int time = 0;
-            time += (a - 11) * 24 * 60;
-            time += (b - 11) * 60;
-            time += (c - 11);
+        int time = 0;
+        time += (a - 11) * 24 * 60;
+        time += (b - 11) * 60;
+        time += (c - 11);
 
-            return time;
-        } else if(a == 11 && b == 11 && c == 11){
-            return 0;
-        }
-        else
-            return -1;
+        return time;
     }
 }
