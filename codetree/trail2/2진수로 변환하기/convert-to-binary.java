@@ -8,13 +8,12 @@ public class Main {
 
         StringBuilder sb = new StringBuilder();
         int index = 0;
-        int answer = 0;
         while(n > 1){
-            answer +=(n%2) * (int)Math.pow(10, index);
+            sb.append((n%2));
             index++;
             n /= 2;
         }
-        answer += n * (int)Math.pow(10, index);
-        System.out.println(answer);
+        sb.append(n);
+        System.out.println(sb.reverse());
     }
 }
