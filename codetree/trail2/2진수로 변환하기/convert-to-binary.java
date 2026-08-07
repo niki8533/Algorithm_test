@@ -10,7 +10,6 @@ public class Main {
         int index = 0;
         while(n > 1){
             sb.append((n%2));
-            index++;
             n /= 2;
         }
         sb.append(n);
