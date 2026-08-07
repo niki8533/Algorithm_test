@@ -19,9 +19,8 @@ public class Main {
         }
         
         StringBuilder sb = new StringBuilder();
-        while(n < b){
+        while(n >= b){
             sb.append(n % b);
-            System.out.println(sb);
             n /= b;
         }
         sb.append(n);
