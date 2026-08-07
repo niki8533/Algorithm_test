@@ -25,6 +25,6 @@ public class Main {
         }
         sb.append(n);
 
-        System.out.println(sb);
+        System.out.println(sb.reverse());
     }
 }
