@@ -9,7 +9,7 @@ public class Main {
         int d2 = sc.nextInt();
         String A = sc.next();
         // Please write your code here.
-        String[] week = {"Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"};
+        String[] week = {"Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"};
         int index = 0;
         for(int i = 0 ; i < 7 ; i++){
             if(week[i].equals(A)){
@@ -31,7 +31,7 @@ public class Main {
 
         int answer = 0;
         int diff = (day2 - day1 + 1);
-        if(index <= (diff % 7)){
+        if(index < (diff % 7)){
             answer = 1;
         }
 
