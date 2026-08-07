@@ -27,7 +27,7 @@ public class Main {
         }
         day2 += d2;
 
-        int diff = (day1 - day2 - 1) % 7;
+        int diff = (day2 - day1 + 1) % 7;
 
         if(diff < 0){
             diff += 7;
