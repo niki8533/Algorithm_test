@@ -13,7 +13,7 @@ public class Main {
             int x1 = Integer.parseInt(st.nextToken());
             int x2 = Integer.parseInt(st.nextToken());
 
-            for(int j = x1 ; j <= x2 ; j++){
+            for(int j = x1 ; j < x2 ; j++){
                 map.put(j, map.getOrDefault(j, 0) + 1);
             }
         }
