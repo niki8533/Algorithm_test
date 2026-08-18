@@ -7,7 +7,8 @@ public class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int n = Integer.parseInt(br.readLine());
         HashMap<Integer, Integer> map = new HashMap<>();
-
+        
+        int index = 0;
         for(int i = 0 ; i < n ; i++){
             StringTokenizer st = new StringTokenizer(br.readLine());
 
@@ -15,13 +16,15 @@ public class Main {
             char d = st.nextToken().charAt(0);
 
             if(d == 'L'){
-                for(int j = x - 1 ; j >= 0 ; j--){
+                for(int j = (index - x) ; j < index ; j++){
                     map.put(j, map.getOrDefault(j, 0) + 1);
                 }
+                index -= x;
             } else {
-                for(int j = 0 ; j < x ; j++){
+                for(int j = index ; j < (index + x) ; j++){
                     map.put(j, map.getOrDefault(j, 0) + 1);
                 }
+                index += x;
             }
         }
 
