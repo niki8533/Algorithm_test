@@ -6,7 +6,7 @@ public class Main {
         // Please write your code here.
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int n = Integer.parseInt(br.readLine());
-        int offset = 5000;
+        int offset = 10000;
 
         int index = 0;
         HashSet<Integer> set = new HashSet<>(); 
