@@ -19,7 +19,7 @@ public class Main {
 
         int max = 0;
         for(int i = 1 ; i <= 100 ; i++){
-            if(arr[i] == 0) continue;
+            //if(arr[i] == 0) continue;
 
             max = Math.max(max, arr[i]);
         }
