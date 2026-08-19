@@ -6,13 +6,13 @@ public class Main {
         // Please write your code here.
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int n = Integer.parseInt(br.readLine());
-        int offset = 10000;
+        int offset = 20000;
 
         int index = 0;
         HashSet<Integer> set = new HashSet<>(); 
-        int[] wc = new int[100001];
-        int[] bc = new int[100001];
-        char[] color = new char[100001];
+        int[] wc = new int[400001];
+        int[] bc = new int[400001];
+        char[] color = new char[400001];
         for(int i = 0 ; i < n ; i++){
             StringTokenizer st = new StringTokenizer(br.readLine());
             int x = Integer.parseInt(st.nextToken());
