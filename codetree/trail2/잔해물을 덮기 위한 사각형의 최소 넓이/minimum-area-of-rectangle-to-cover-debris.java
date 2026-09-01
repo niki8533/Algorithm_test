@@ -27,9 +27,9 @@ public class Main {
             }
         }
 
-        int xMax = 0;
+        int xMax = Integer.MIN_VALUE;
         int xMin = Integer.MAX_VALUE;
-        int yMax = 0;
+        int yMax = Integer.MIN_VALUE;
         int yMin = Integer.MAX_VALUE;
         for(int i = 0 ; i < 2001 ; i++){
             for(int j = 0 ; j < 2001 ; j++){
@@ -47,6 +47,9 @@ public class Main {
         }
 
         int answer = (xMax - xMin + 1) * (yMax - yMin + 1);
+        if(rect2_x1 <= rect2_x1 && rect1_x2 <= rect2_x2 && rect2_y1 <= rect2_y1 && rect1_y2 <= rect2_y2){
+            answer = 0;
+        }
         System.out.println(answer);
     }
 }
