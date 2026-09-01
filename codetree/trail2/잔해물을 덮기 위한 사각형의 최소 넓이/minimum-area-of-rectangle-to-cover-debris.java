@@ -47,7 +47,7 @@ public class Main {
         }
 
         int answer = (xMax - xMin + 1) * (yMax - yMin + 1);
-        if(rect2_x1 <= rect1_x1 && rect1_x2 <= rect2_x2 && rect2_y1 <= rect2_y1 && rect1_y2 <= rect2_y2){
+        if(rect2_x1 <= rect1_x1 && rect1_x2 <= rect2_x2 && rect2_y1 <= rect1_y1 && rect1_y2 <= rect2_y2){
             answer = 0;
         }
         System.out.println(answer);
