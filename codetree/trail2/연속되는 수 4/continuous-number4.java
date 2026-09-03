@@ -9,10 +9,12 @@ public class Main {
             arr[i] = sc.nextInt();
         }
         // Please write your code here.
+        int max = 1;
         Stack<Integer> s = new Stack<>();
         s.add(arr[0]);
         for(int i = 1 ; i < n ; i++){
             if(arr[i] < s.peek()){
+                max = Math.max(max, s.size());
                 s = new Stack<>();
                 s.add(arr[i]);
             } else if(arr[i] > s.peek()){
@@ -20,6 +22,7 @@ public class Main {
             } else continue;
         }
 
-        System.out.println(s.size());
+        max = Math.max(max, s.size());
+        System.out.println(max);
     }
 }
