@@ -9,8 +9,7 @@ public class Main {
             arr[i] = sc.nextInt();
         
         // Please write your code here.
-        Stack<Integer> stack = new Stack<>();
-        int count = 1;
+        int count = 0;
         int max = 1;
         boolean isNegative = false;
         for(int i = 0 ; i < n ; i++){
@@ -22,7 +21,6 @@ public class Main {
 
             if(isNegative == temp){
                 count++;
-                stack.add(arr[i]);
             } else {
                 isNegative = temp;
                 count = 1;
