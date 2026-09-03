@@ -25,14 +25,13 @@ public class Main {
             return;
         }
 
-        for(int i = index ; i < n ; i++){
-            if(arr[i] < s.peek()){
+        for(int i = index + 1 ; i < n ; i++){
+            if(arr[i] <= t){
                 max = Math.max(max, s.size());
                 s = new Stack<>();
+            } else if(arr[i] > t){
                 s.add(arr[i]);
-            } else if(arr[i] > s.peek()  && arr[i] > t){
-                s.add(arr[i]);
-            } else continue;
+            }
         }
 
         max = Math.max(max, s.size());
