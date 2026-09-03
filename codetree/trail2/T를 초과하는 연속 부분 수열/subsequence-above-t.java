@@ -9,11 +9,10 @@ public class Main {
         for (int i = 0; i < n; i++)
             arr[i] = sc.nextInt();
         // Please write your code here.
-        int max = 0;
         Stack<Integer> s = new Stack<>();
         int index = 0;
         for(int i = 0 ; i < n ; i++){
-            if(arr[i] >= t){
+            if(arr[i] > t){
                 s.add(arr[i]);
                 index = i;
                 break;
@@ -25,12 +24,13 @@ public class Main {
             return;
         }
 
+        int max = 0;
         for(int i = index ; i < n ; i++){
-            if(arr[i] < s.peek() && arr[i] >= t){
+            if(arr[i] < s.peek()){
                 max = Math.max(max, s.size());
                 s = new Stack<>();
                 s.add(arr[i]);
-            } else if(arr[i] > s.peek()){
+            } else if(arr[i] > s.peek()  && arr[i] > t){
                 s.add(arr[i]);
             } else continue;
         }
