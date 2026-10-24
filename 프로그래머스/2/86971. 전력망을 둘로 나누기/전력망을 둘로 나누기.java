@@ -1,11 +1,10 @@
 import java.util.*;
 
 class Solution {
-    static ArrayList<Integer>[] graph;
     static boolean[] visited;
-    static int answer;
+    static List<Integer>[] graph;
     public int solution(int n, int[][] wires) {
-        answer = Integer.MAX_VALUE;
+        int answer = Integer.MAX_VALUE;
         graph = new ArrayList[n + 1];
         
         for(int i = 1 ; i <= n ; i++){
@@ -25,6 +24,7 @@ class Solution {
             int v2 = wires[i][1];
             
             visited = new boolean[n + 1];
+
             
             graph[v1].remove(Integer.valueOf(v2));
             graph[v2].remove(Integer.valueOf(v1));
@@ -42,14 +42,14 @@ class Solution {
     
     public static int dfs(int v){
         visited[v] = true;
-        int cnt = 1;
+        int count = 1;
         
         for(int next : graph[v]){
             if(!visited[next]){
-                cnt += dfs(next);
+                count += dfs(next);
             }
         }
         
-        return cnt;
+        return count;
     }
 }
