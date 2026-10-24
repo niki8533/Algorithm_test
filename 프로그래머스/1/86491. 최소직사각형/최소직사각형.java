@@ -3,25 +3,23 @@ import java.util.*;
 class Solution {
     public int solution(int[][] sizes) {
         int answer = 0;
+        int[] w = new int[sizes.length];
+        int[] h = new int[sizes.length];
         
-        int w = 0;
-        int h = 0;
-
         for(int i = 0 ; i < sizes.length ; i++){
-            Arrays.sort(sizes[i]);
-        }
-
-        for(int i = 0 ; i < sizes.length ; i++){
-            if(w < sizes[i][0]){
-                w = sizes[i][0];
-            }
-            if(h < sizes[i][1]){
-                h = sizes[i][1];
+            if(sizes[i][0] > sizes[i][1]){
+                w[i] = sizes[i][0];
+                h[i] = sizes[i][1];
+            } else {
+                w[i] = sizes[i][1];
+                h[i] = sizes[i][0];
             }
         }
-
-        answer = w * h;
         
+        Arrays.sort(w);
+        Arrays.sort(h);
+        
+        answer = w[sizes.length - 1] * h[sizes.length - 1];
         return answer;
     }
 }
